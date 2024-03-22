@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+</head>
+
+<body>
+
+    <table class="table table-striped table-dark">
+        <tr>
+            <td>id</td>
+            <td>product_id</td>
+            <td>Price</td>
+            <td>Qty</td>
+            <td>User_id</td>
+            <td>Delete</td>
+            <td>Edit</td>
+        </tr>
+        {% for row in carts %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td><img src="/media/{{row.product_id.image}}" alt="" width="50px" height="50px">{{row.product_id.name}}</td>
+            
+            <td>{{ row.price }}</td>
+            <td>{{ row.qty }}</td>
+            <td>{{ row.user_id }}</td>
+            
+             <td>  <a href="/delete_cart/{{ row.id }}">Delete</a>
+            </td>
+            <td>
+                <a href="/edit_cart/{{ row.id }}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>
